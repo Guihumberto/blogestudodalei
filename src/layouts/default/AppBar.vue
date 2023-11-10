@@ -1,7 +1,7 @@
 <template>
  <div class="containerHead">
   <div>
-    <h1>Blog <span class="estlei">Estudo da Lei</span><span class="el"> EL</span></h1>
+    <h1 @click.prevent="home()">Blog <span class="estlei">Estudo da Lei</span><span class="el"> EL</span></h1>
     <nav>
       <a>Leis</a>
       <a>Súmulas</a>
@@ -15,10 +15,17 @@
 </template>
 
 <script>
+  import { useGeneralStore } from '@/store/GeneralStore'
+  const generalStore = useGeneralStore()
   export default {
     data(){
       return{
         collapse: false
+      }
+    },
+    methods:{
+      home(){
+        generalStore.changePosts(true)
       }
     }
   }
@@ -37,6 +44,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1;
+  user-select:none
 
 }
 .containerHead div{
@@ -44,6 +52,12 @@
   justify-content: space-between;
   align-items: center;
   width: 1280px;
+}
+.containerHead div h1{
+  transition: .6s ease;
+}
+.containerHead div h1:hover{
+  color: rgb(200, 207, 207);
 }
 .containerHead div nav a{
   text-decoration: none;

@@ -1,6 +1,5 @@
 <template>
   <div class="wrapperPostFor">
-    <div class="disciplina"><h1>Direito Tributário</h1></div>
     <div class="author">
       <v-avatar
         size="60"
@@ -26,13 +25,10 @@
 <style scoped>
 .wrapperPostFor {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: first baseline;
   align-items: center;
   background: #fff;
-  width: 100vw;
-  margin: 1rem 0;
-  padding: 2rem 0;
+  width: 1280px;
 }
 .disciplina{
   background: rgb(54, 51, 51);
@@ -41,7 +37,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
 }
 .author{
   display: flex;
@@ -49,18 +44,26 @@
   align-items: center;
   line-height: 1.2;
   width: 1280px;
-  padding: .5rem;
-  color: #000;
+  padding-right: .5rem;
+  color: #585656;
 }
 .nameAuthor a{
   text-decoration: none;
-  color: #000;
+  color: #5f5c5c;
   font-weight: 100;
   font-size: 15px;
   transition: .6s ease;
 }
 .nameAuthor a:hover{
   font-weight: 500;
+}
+@media (max-width: 1280px){
+  .wrapperPostFor {
+    width: 100%;
+  }
+  .author{
+    width: 100%;
+  }
 }
 
 </style>

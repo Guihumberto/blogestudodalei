@@ -1,7 +1,7 @@
 <template>
   <div class="wrapperAllPosts">
     <div class="posts">
-      <div class="post" v-for="i in 5" :key="i">
+      <div class="post" v-for="i in 5" :key="i" @click="onePostIn()">
         <div class="imgPost">
           Imagem
         </div>
@@ -31,6 +31,9 @@
 </template>
 
 <script>
+import { useGeneralStore } from '@/store/GeneralStore'
+const generalStore = useGeneralStore()
+
 import Author from './Author.vue'
 import Disciplinas from './Disciplinas.vue'
 import Tags from './Tags.vue'
@@ -41,6 +44,11 @@ import Subjects from './Subjects.vue'
       Disciplinas,
       Author,
       Tags,
+    },
+    methods:{
+      onePostIn(){
+        generalStore.changePosts(false)
+      }
     }
   }
 </script>
