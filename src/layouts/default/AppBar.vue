@@ -6,6 +6,7 @@
       <a>Leis</a>
       <a>Súmulas</a>
       <a>Jurispruência</a>
+      <a @click="goBLog()">Blog</a>
     </nav>
     <v-btn variant="plain" class="filter" icon="mdi-filter"  @click="activeFilter()"></v-btn>
     <v-btn variant="plain" :icon="readDark ? 'mdi-moon-waxing-crescent' : 'mdi-weather-sunny'" @click="activeDark()"></v-btn>
@@ -39,6 +40,9 @@
       },
       activeDark(){
         generalStore.changeDark()
+      },
+      goBLog(){
+        this.$router.replace('/blog')
       }
     }
   }
