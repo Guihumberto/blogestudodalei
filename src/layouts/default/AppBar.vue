@@ -7,6 +7,7 @@
       <a>Súmulas</a>
       <a>Jurispruência</a>
     </nav>
+    <v-btn class="filter" icon="mdi-filter"  @click="activeFilter()"></v-btn>
   </div>
   <!-- <div :class="menuShow ? 'disciplinafixed': 'disciplinafixedHidden'">
     <h2>Direito Tributário</h2>
@@ -26,6 +27,9 @@
     methods:{
       home(){
         generalStore.changePosts(true)
+      },
+      activeFilter(){
+        generalStore.changeFilter(true)
       }
     }
   }
@@ -44,14 +48,14 @@
   justify-content: center;
   align-items: center;
   z-index: 1;
-  user-select:none
-
+  user-select:none;
+  transition: .6s ease;
 }
 .containerHead div{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1280px;
+  width: 1095px;
 }
 .containerHead div h1{
   transition: .6s ease;
@@ -61,7 +65,7 @@
 }
 .containerHead div nav a{
   text-decoration: none;
-  margin-right: 2rem;
+  margin-left: 2rem;
   padding: .3rem 0;
   transition: .6s ease;
 }
@@ -70,6 +74,9 @@
   border-bottom: 10px solid rgb(248, 245, 245);
 }
 .el{
+  display: none;
+}
+.filter{
   display: none;
 }
 @media (max-width: 1250px){
@@ -81,12 +88,23 @@
     display: none;
   } */
 }
+@media (max-width: 924px){
+  .filter{
+    display: inline;
+  }
+  .containerHead{
+    height: 70px;
+  }
+  .containerHead div h1{
+    font-size: 1.7rem;
+  }
+}
 @media (max-width: 624px){
   .containerHead div nav{
     display: none;
   }
 }
-@media (max-width: 240px){
+@media (max-width: 340px){
   .estlei {
     display: none;
   }

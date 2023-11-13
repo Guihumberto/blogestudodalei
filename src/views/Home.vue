@@ -1,6 +1,6 @@
 <template>
   <div class="contApp">
-    <div class="breadcrumbs mt-16 pt-16">
+    <div class="breadcrumbs">
       <V-btn flat @click="generalStore.changePosts(true)"> <v-icon class="mr-1">mdi-home</v-icon>Home</V-btn>
     </div>
     <all-posts v-if="generalStore.readPosts" />
@@ -27,13 +27,19 @@
   align-items: center;
 }
 .breadcrumbs{
-  width: 1320px;
+  width: 1110px;
   padding-bottom: 16px;
+  margin-top: 6.5rem;
+  transition: .6s ease;
 }
 @media (max-width: 1558px){
   .breadcrumbs{
     width: 100%;
-    padding-bottom: 0;
+  }
+}
+@media (max-width: 924px){
+  .breadcrumbs{
+    margin-top: 4.5rem;
   }
 }
 </style>

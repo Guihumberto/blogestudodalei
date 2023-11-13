@@ -21,12 +21,30 @@
       </div>
       <v-btn class="mt-10" color="black" width="50%">VEja Mais</v-btn>
     </div>
-    <div class="tag">
-      <author />
-      <disciplinas />
-      <subjects />
-      <tags />
+    <FilterVue class="filter"/>
+    <template>
+    <div class="text-center">
+      <v-btn
+        color="primary"
+      >
+        Open Dialog
+
+        <v-dialog
+          v-model="dialogFilter"
+          activator="parent"
+          width="auto"
+          class="dialogFIlter"
+        >
+          <v-card>
+              <FilterVue/>
+            <v-card-actions>
+              <v-btn color="primary" block @click="disableFilter()">Close Dialog</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-btn>
     </div>
+</template>
   </div>
 </template>
 
@@ -34,20 +52,27 @@
 import { useGeneralStore } from '@/store/GeneralStore'
 const generalStore = useGeneralStore()
 
-import Author from './Author.vue'
-import Disciplinas from './Disciplinas.vue'
-import Tags from './Tags.vue'
-import Subjects from './Subjects.vue'
+import FilterVue from './Filter/FilterAll.vue'
   export default {
     components:{
-      Subjects,
-      Disciplinas,
-      Author,
-      Tags,
+      FilterVue,
+    },
+    data(){
+      return{
+        dialog: false,
+      }
+    },
+    computed:{
+      dialogFilter(){
+        return generalStore.readFilter
+      }
     },
     methods:{
       onePostIn(){
         generalStore.changePosts(false)
+      },
+      disableFilter(){
+        generalStore.changeFilter(false)
       }
     }
   }
@@ -59,10 +84,10 @@ import Subjects from './Subjects.vue'
   justify-content: center;
   align-items: first baseline;
   width: 100vw;
-  margin: 1rem 0;
+  margin: .5rem 0;
 }
 .posts{
-  max-width: 1280px;
+  max-width: 1024px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,33 +114,29 @@ import Subjects from './Subjects.vue'
   padding: 1rem;
   border-radius: 16px;
 }
-
-.tag{
-  max-width: 300px;
-  border: 2px solid #e7cdcd;
-  min-height: 100px;
-  border-radius: 12px;
-  padding: .5rem;
-  background: #2E3440;
-  color: aliceblue;
+.dialogFIlter{
+  display: none;
 }
-@media (max-width: 1558px){
+
+@media (max-width: 1024px){
   .posts{
-    max-width: 1280px;
+    max-width: 1024px;
   }
   .post{
     padding: 2rem 0;
     width: 95%;
   }
 }
-@media (max-width: 624px){
-  .tag{
-    display: none;
-  }
-}
 @media (max-width: 500px){
   .imgPost{
     display: none;
+  }
+}
+@media (max-width: 924px){
+  .filter{
+    display: none;
+  }.dialogFIlter{
+    display: flex;
   }
 }
 </style>

@@ -62,7 +62,7 @@ import Share from './Share.vue'
 
 <style lang="scss" scoped>
 .containerPostWrapper{
-  max-width: 1290px;
+  max-width: 1075px;
 }
 .destaque{
   font-size: 2rem;

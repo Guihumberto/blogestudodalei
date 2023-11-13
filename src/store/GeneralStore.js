@@ -3,7 +3,8 @@ import { defineStore } from "pinia";
 export const useGeneralStore = defineStore("general", {
   state: () => ({
     posts: true,
-    confirm: true
+    confirm: true,
+    filterAll: false
   }),
   getters: {
     readPosts() {
@@ -12,6 +13,9 @@ export const useGeneralStore = defineStore("general", {
     readConfirm() {
       return this.confirm
     },
+    readFilter() {
+      return this.filterAll
+    },
   },
   actions:{
     changePosts(value) {
@@ -19,6 +23,9 @@ export const useGeneralStore = defineStore("general", {
     },
     changeConfirm(value) {
       this.confirm = value
+    },
+    changeFilter(value){
+      this.filterAll = value
     }
   }
 });
