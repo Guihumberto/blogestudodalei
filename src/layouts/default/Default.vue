@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :theme="generalStore.readDark ? 'dark' : ''">
     <default-bar class="postscomp" />
     <default-view class="postscomp" />
     <Footer class="postscomp" />
@@ -11,6 +11,9 @@
 </template>
 
 <script setup>
+  import { useGeneralStore } from '@/store/GeneralStore'
+  const generalStore = useGeneralStore()
+
   import DefaultBar from './AppBar.vue'
   import DefaultView from './View.vue'
   import Footer from './Footer.vue';
@@ -31,7 +34,14 @@
   })
 </script>
 
-<style scoped>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
 .disciplinafixed{
   height: 3rem;
   position: fixed;

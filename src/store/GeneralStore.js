@@ -4,7 +4,8 @@ export const useGeneralStore = defineStore("general", {
   state: () => ({
     posts: true,
     confirm: true,
-    filterAll: false
+    filterAll: false,
+    dark: false
   }),
   getters: {
     readPosts() {
@@ -16,6 +17,9 @@ export const useGeneralStore = defineStore("general", {
     readFilter() {
       return this.filterAll
     },
+    readDark() {
+      return this.dark
+    },
   },
   actions:{
     changePosts(value) {
@@ -26,6 +30,9 @@ export const useGeneralStore = defineStore("general", {
     },
     changeFilter(value){
       this.filterAll = value
+    },
+    changeDark(){
+      this.dark = !this.dark
     }
   }
 });

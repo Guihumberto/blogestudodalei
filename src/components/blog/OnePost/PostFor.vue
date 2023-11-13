@@ -27,7 +27,6 @@
   display: flex;
   justify-content: first baseline;
   align-items: center;
-  background: #fff;
   width: 1280px;
 }
 .disciplina{

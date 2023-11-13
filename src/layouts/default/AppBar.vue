@@ -7,7 +7,8 @@
       <a>Súmulas</a>
       <a>Jurispruência</a>
     </nav>
-    <v-btn class="filter" icon="mdi-filter"  @click="activeFilter()"></v-btn>
+    <v-btn variant="plain" class="filter" icon="mdi-filter"  @click="activeFilter()"></v-btn>
+    <v-btn variant="plain" :icon="readDark ? 'mdi-moon-waxing-crescent' : 'mdi-weather-sunny'" @click="activeDark()"></v-btn>
   </div>
   <!-- <div :class="menuShow ? 'disciplinafixed': 'disciplinafixedHidden'">
     <h2>Direito Tributário</h2>
@@ -24,12 +25,20 @@
         collapse: false
       }
     },
+    computed:{
+      readDark(){
+        return generalStore.readDark
+      }
+    },
     methods:{
       home(){
         generalStore.changePosts(true)
       },
       activeFilter(){
         generalStore.changeFilter(true)
+      },
+      activeDark(){
+        generalStore.changeDark()
       }
     }
   }

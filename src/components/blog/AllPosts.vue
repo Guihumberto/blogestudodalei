@@ -123,7 +123,7 @@ import FilterVue from './Filter/FilterAll.vue'
     max-width: 1024px;
   }
   .post{
-    padding: 2rem 0;
+    padding: 1rem;
     width: 95%;
   }
 }
