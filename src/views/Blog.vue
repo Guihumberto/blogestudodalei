@@ -17,7 +17,8 @@
       <a href="" class="site">Download CV</a>
     </div>
     <div class="home-img">
-      <img src="@/assets/dark.png" alt="">
+      <img src="@/assets/dark.png" alt="Photo_Humberto">
+      <div class="circle"></div>
     </div>
   </section>
 </template>
@@ -98,5 +99,13 @@
 .home-img img{
   height: 80%;
   pointer-events: none;
+}
+.home-img .circle{
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: #37a1f2;
+  z-index: -1;
 }
 </style>
