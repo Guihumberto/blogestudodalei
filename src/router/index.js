@@ -19,7 +19,7 @@ const routes = [
     children: [
       {
         path: '/blog',
-        name: 'Home',
+        name: 'Blog',
         component: () => import('@/views/Blog.vue'),
       },
     ],

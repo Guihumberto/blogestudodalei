@@ -17,7 +17,7 @@
       <a href="" class="site">Download CV</a>
     </div>
     <div class="home-img">
-      <!-- <img src="https://www.insper.edu.br/wp-content/uploads/2023/03/Linguagem-de-programacao-2-shutterstock_2060615648.jpg.jpeg" alt=""> -->
+      <img src="@/assets/dark.png" alt="">
     </div>
   </section>
 </template>
@@ -29,6 +29,7 @@
 <style lang="scss" scoped>
 .home{
   height: 100vh;
+  justify-content: center;
   display: flex;
   align-items: center;
   padding: 60px 10% 0;
@@ -88,11 +89,14 @@
   color: #37a1f2;
 }
 
+.home-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+}
 .home-img img{
-  position: absolute;
-  bottom: 0;
-  right: 30px;
-  width: 45%;
+  height: 80%;
   pointer-events: none;
 }
 </style>

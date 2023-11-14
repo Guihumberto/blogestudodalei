@@ -25,13 +25,13 @@
         <nav class="navbar">
           <a href="#" class="active">Home</a>
           <a href="#">Sobre</a>
-          <a href="#">Habilidades</a>
+          <a @click="goTo()">Estudo da Lei</a>
           <a href="#">Portifolio</a>
           <a href="#">Contato</a>
         </nav>
 
         <div class="toggle-icon">
-            <a @click="darkMode = !darkMode"><v-icon :icon="darkMode ? 'mdi-weather-night' : 'mdi-brightness-5'"></v-icon></a>
+            <a @click="darkMode = !darkMode"><v-icon :icon="darkMode ? 'mdi-weather-night' : 'mdi-white-balance-sunny'"></v-icon></a>
         </div>
       </header>
       <default-view />
@@ -55,11 +55,21 @@
   //       }
   //     }
   // })
+
+  function goTo () {
+    this.$router.replace('/')
+  }
+
   onMounted(() => {
    const container = document.querySelector('.container')
 
    const darkContainer = document.querySelector('#dark-container')
    darkContainer.classList.remove('active')
+
+   const darkContainerImg = document.querySelector('#dark-container .home-img img')
+
+   darkContainerImg.src = '/src/assets/light.png'
+
 
    watch(darkMode, async (newQ, oldQ) => {
       if(newQ){
