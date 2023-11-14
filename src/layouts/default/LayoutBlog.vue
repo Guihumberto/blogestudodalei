@@ -68,7 +68,7 @@
 
    const darkContainerImg = document.querySelector('#dark-container .home-img img')
 
-   darkContainerImg.src = '@/assets/light.png'
+   darkContainerImg.src = '/assets/light.png'
 
 
    watch(darkMode, async (newQ, oldQ) => {
