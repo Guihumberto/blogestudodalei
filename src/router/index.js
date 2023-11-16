@@ -11,6 +11,21 @@ const routes = [
         name: 'Home',
         component: () => import('@/views/Home.vue'),
       },
+      {
+        path: '/post/:id',
+        name: 'Post',
+        component: () => import('@/views/Home.vue'),
+      },
+      {
+        path: '/admin',
+        name: 'Admin',
+        component: () => import('@/views/Admin.vue'),
+      },
+      {
+        path: '/admin/post/:id',
+        name: 'Revisao',
+        component: () => import('@/views/Revisao.vue'),
+      },
     ],
   },
   {

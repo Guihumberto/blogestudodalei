@@ -1,7 +1,12 @@
 <template>
   <div class="contApp">
     <div class="breadcrumbs">
-      <V-btn flat @click="generalStore.changePosts(true)"> <v-icon class="mr-1">mdi-home</v-icon>Home</V-btn>
+      <v-btn
+        flat
+        @click="goHome()"
+      >
+        <v-icon class="mr-1">mdi-home</v-icon>Home
+      </v-btn>
     </div>
     <all-posts v-if="generalStore.readPosts" />
     <one-post v-else />
@@ -9,11 +14,17 @@
 </template>
 
 <script setup>
+  import router from '@/router';
   import { useGeneralStore } from '@/store/GeneralStore'
   const generalStore = useGeneralStore()
 
   import AllPosts from '@/components/blog/AllPosts.vue';
   import OnePost from '@/components/blog/OnePost/Post.vue'
+
+  function goHome() {
+    router.push('/')
+    generalStore.changePosts(true)
+  }
 
 
 
@@ -32,7 +43,7 @@
   margin-top: 6.5rem;
   transition: .6s ease;
 }
-@media (max-width: 1558px){
+@media (max-width: 1024px){
   .breadcrumbs{
     width: 100%;
   }

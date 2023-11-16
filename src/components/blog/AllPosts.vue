@@ -1,7 +1,7 @@
 <template>
   <div class="wrapperAllPosts">
     <div class="posts">
-      <div class="post" v-for="i in 5" :key="i" @click="onePostIn()">
+      <div class="post" v-for="i in 5" :key="i" @click="onePostIn(i)">
         <div class="imgPost">
           Imagem
         </div>
@@ -17,6 +17,7 @@
              uidem rerum. Accusantium nobis sequi laudantium magni ea delectus debitis nulla?
           </p>
           <small class="mt-5">publicado em: 12 de janeiro de 2023</small>
+          <div class="line_divider"></div>
         </div>
       </div>
       <v-btn class="mt-10" color="black" width="50%">VEja Mais</v-btn>
@@ -68,8 +69,9 @@ import FilterVue from './Filter/FilterAll.vue'
       }
     },
     methods:{
-      onePostIn(){
+      onePostIn(namePost){
         generalStore.changePosts(false)
+        this.$router.push(`/post/${namePost}`)
       },
       disableFilter(){
         generalStore.changeFilter(false)
@@ -99,7 +101,7 @@ import FilterVue from './Filter/FilterAll.vue'
   display: flex;
   justify-content: left;
   justify-items: center;
-  border-bottom: 1px solid grey;
+  border-radius: 16px;
   transition: .6s ease;
 }
 .post:hover{
@@ -113,6 +115,11 @@ import FilterVue from './Filter/FilterAll.vue'
   border: 1px solid grey;
   padding: 1rem;
   border-radius: 16px;
+}
+.line_divider{
+  width: 100%;
+  border-bottom: 1px solid rgb(202, 192, 192);
+  margin-top: 1rem;
 }
 .dialogFIlter{
   display: none;
