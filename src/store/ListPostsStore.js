@@ -185,6 +185,23 @@ export const useListPostsStore = defineStore("listPosts", {
     savePost(post) {
       this.listPosts.push(post)
     },
+    updatePost(post){
+    this.listPosts(x => {
+        if(x.id == post.id) {
+          x = post
+        }
+      })
+    },
+    publicarPost(post){
+      this.listPosts.map(x => {
+        if(x.id == post.id) {
+          x.publish = !x.publish
+        }
+      })
+    },
+    deletePost(post){
+      this.listPosts = this.listPosts.filter(x => x.id != post.id)
+    },
     showCreatePost(){
       this.showListPosts = !this.showListPosts
     },

@@ -5,7 +5,7 @@
     <nav>
       <a>Leis</a>
       <a>Súmulas</a>
-      <a>Jurispruência</a>
+      <a @click="goAdmin()">Admin</a>
       <a @click="goBLog()">Blog</a>
     </nav>
     <v-btn variant="plain" class="filter" icon="mdi-filter"  @click="activeFilter()"></v-btn>
@@ -43,6 +43,9 @@
       },
       goBLog(){
         this.$router.replace('/blog')
+      },
+      goAdmin(){
+        this.$router.replace('/admin')
       }
     }
   }

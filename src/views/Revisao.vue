@@ -2,7 +2,7 @@
   <div class="wrapperRevisao">
     <div class="contentRevisao">
       <v-btn flat="" to="/admin" icon="mdi-arrow-left"></v-btn>
-      <h1>Revisão</h1>
+      <h1>{{ $route.query.publish ? 'Revisão de Post Publicado' : 'Revisão de post não Publicado'}}</h1>
       <v-btn @click="edit = !edit">Editar</v-btn>
       <div>
         <rev-post v-if="!edit" :post="post" />
@@ -33,6 +33,7 @@ import postEdit from '@/components/Admin/postEdit.vue'
     },
     created(){
       listStore.loadOnePost(this.idPost)
+      this.edit = this.$route.query.edit
     }
   }
 </script>
