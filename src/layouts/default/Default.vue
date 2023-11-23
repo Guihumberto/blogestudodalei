@@ -35,12 +35,43 @@
 </script>
 
 <style>
+:root {
+  --step--2: clamp(0.625rem, 0.8356rem + -0.2717vw, 0.7813rem);
+  --step--1: clamp(0.8838rem, 0.9562rem + -0.0935vw, 0.9375rem);
+  --step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.2048rem + 0.7261vw, 1.7675rem);
+  --step-2: clamp(1.62rem, 1.3141rem + 1.5293vw, 2.4994rem);
+  --step-3: clamp(1.9438rem, 1.3907rem + 2.7652vw, 3.5338rem);
+  --step-4: clamp(2.3325rem, 1.4058rem + 4.6337vw, 4.9969rem);
+  --step-5: clamp(2.7994rem, 1.3155rem + 7.4196vw, 7.0656rem);
+
+  --ff-base: 'Poppins', sans-serif;
+  --ff-accent: 'IBM Plex Sans', sans-serif;
+
+  --clr-text: hsl(204, 100%, 1%);
+  --clr-surface: hsl(0, 0%, 100%);
+  --clr-primary: hsl(329, 85%, 53%);
+  --clr-secondary: hsl(208, 83%, 93%);
+  --clr-accent: hsl(89, 85%, 33%);
+
+  --fs-300: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --fs-400: clamp(1.35rem, 1.2048rem + 0.7261vw, 1.7675rem);
+  --fs-500: clamp(1.62rem, 1.3141rem + 1.5293vw, 2.4994rem);
+  --fs-600: clamp(1.9438rem, 1.3907rem + 2.7652vw, 3.5338rem);
+  --fs-700: clamp(2.3325rem, 1.4058rem + 4.6337vw, 4.9969rem);
+  --fs-800: clamp(2.7994rem, 1.3155rem + 7.4196vw, 7.0656rem);
+}
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
   text-decoration: none;
+}
+body{
+  font-size: var(--step-0);
+  font-family: var(--ff-base);
+  line-height: 1.6;
+  color: var(--clr-text);
 }
 .disciplinafixed{
   height: 3rem;

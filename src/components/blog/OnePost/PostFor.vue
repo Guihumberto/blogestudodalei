@@ -2,13 +2,13 @@
   <div class="wrapperPostFor">
     <div class="author">
       <v-avatar
-        size="60"
+        size="70"
         color="grey"
         icon="mdi-account"
         class="mr-5"
       ></v-avatar>
       <div class="nameAuthor">
-        <h2>Por João Humberto</h2>
+        <h3>Por João Humberto</h3>
         <h4>Auditor Fiscal</h4>
         <a href="#">Sobre o Autor</a>
       </div>

@@ -23,14 +23,17 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .tag{
-  max-width: 280px;
+  min-width: 30%;
   border: 2px solid #e7cdcd;
   min-height: 100px;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: .5rem;
   background: #2E3440;
   color: aliceblue;
+}
+h2, h3, h4{
+  font-size: var(--step-1);
 }
 </style>

@@ -9,10 +9,10 @@
 
 <script>
 import LoginAdmin from '@/components/Login/LoginAdmin.vue'
-import PostCreate from '@/components/Admin/postCreate.vue'
 import MainPost from '@/components/Admin/mainPost.vue'
+
   export default {
-  components: { LoginAdmin, PostCreate, MainPost },
+  components: { LoginAdmin, MainPost },
     data(){
       return{
         login: false

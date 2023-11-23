@@ -4,8 +4,9 @@
           <v-avatar>
             <v-icon size="50" color="#fff">mdi-comment-bookmark-outline</v-icon>
           </v-avatar>
-          <h2>Estudo da Lei</h2>
-          <h4>www.estudodalei.com.br</h4>
+          <h3>Estudo da Lei</h3>
+          <h5>www.estudodalei.com.br</h5>
+          <h4 class="mt-5 py-2 bg-blue">Filtros</h4>
         </div>
       </div>
 </template>

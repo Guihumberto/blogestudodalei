@@ -4,9 +4,9 @@
       variant="outlined" color="grey"
       @click="showListPostCreated()"
     >
-    {{ showListPosts ? 'Novo' : 'Lista' }}
+    {{ createPost ? 'Novo' : 'Voltar' }}
     </v-btn>
-    <list-post v-if="showListPosts" />
+    <list-post v-if="createPost" />
     <post-create v-else />
   </div>
 </template>
@@ -15,25 +15,26 @@
 import listPost from './listPost.vue'
 import PostCreate from './postCreate.vue'
 
-import { useListPostsStore } from '@/store/ListPostsStore'
-const listPostsStore = useListPostsStore()
-
   export default {
     components: { listPost, PostCreate },
     data(){
       return{
-
+        createPost: this.$route.query.create
       }
     },
     computed:{
       showListPosts(){
-        return listPostsStore.readShowListPosts
+        return this.createPost
       }
     },
     methods:{
       showListPostCreated(){
-        listPostsStore.showCreatePost()
+       this.createPost = !this.createPost
+       this.$router.push(`/admin/?create=${this.createPost}`)
       }
+    },
+    mounted(){
+      this.createPost = this.$route.query.create
     }
   }
 </script>

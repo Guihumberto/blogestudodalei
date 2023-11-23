@@ -62,22 +62,25 @@ import Share from './Share.vue'
 
 <style lang="scss" scoped>
 .containerPostWrapper{
-  max-width: 1075px;
+  max-width: 100%;
+}
+h1{
+  font-size: var(--step-3);
+}
+h2{
+  font-size: var(--step-1);
 }
 .destaque{
-  font-size: 2rem;
-  margin: 4rem 0;
+  margin: max(5vh, 2rem) 0;
   border-top: solid grey;
   border-bottom: solid grey;
-  padding: 1rem 5rem;
+
+  padding: max(3vh, 1rem) 1.5rem;
+  background: #333;
+  color: white;
 }
 @media (max-width: 1290px){
-  .containerPostWrapper{
-    width: 100%;
-    padding: 1rem;
-  }
   .destaque{
-    font-size: 2rem;
     margin: 0;
     border-top: solid grey;
     border-bottom: solid grey;

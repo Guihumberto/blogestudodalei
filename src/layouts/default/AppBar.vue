@@ -20,6 +20,7 @@
 <script>
   import { useGeneralStore } from '@/store/GeneralStore'
   const generalStore = useGeneralStore()
+
   export default {
     data(){
       return{
@@ -33,7 +34,7 @@
     },
     methods:{
       home(){
-        generalStore.changePosts(true)
+        this.$router.push('/')
       },
       activeFilter(){
         generalStore.changeFilter(true)
@@ -45,7 +46,7 @@
         this.$router.replace('/blog')
       },
       goAdmin(){
-        this.$router.replace('/admin')
+        this.$router.replace('/admin?create=true')
       }
     }
   }
@@ -57,7 +58,7 @@
   top: 0;
   background: #2E3440;
   width: 100vw;
-  height: 100px;
+  height: min(70px, 6rem);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -71,10 +72,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1095px;
+  width: min(90%, 1000px);
 }
 .containerHead div h1{
   transition: .6s ease;
+  font-size: var(--step-2);
 }
 .containerHead div h1:hover{
   color: rgb(200, 207, 207);
@@ -83,11 +85,14 @@
   text-decoration: none;
   margin-left: 2rem;
   padding: .3rem 0;
-  transition: .6s ease;
+  transition: .5s ease;
 }
-.containerHead div nav a:hover{
+::marker {
+  color: blue;
+}
+.containerHead div nav a:hover, :focus{
   color: rgb(223, 217, 217);
-  border-bottom: 10px solid rgb(248, 245, 245);
+  border-bottom: 8px solid rgb(248, 245, 245);
 }
 .el{
   display: none;
@@ -95,21 +100,10 @@
 .filter{
   display: none;
 }
-@media (max-width: 1250px){
-  .containerHead div{
-    width: 100%;
-    padding: 0 2rem;
-  }
-  /* .containerHead div nav{
-    display: none;
-  } */
-}
+
 @media (max-width: 924px){
   .filter{
     display: inline;
-  }
-  .containerHead{
-    height: 70px;
   }
   .containerHead div h1{
     font-size: 1.7rem;

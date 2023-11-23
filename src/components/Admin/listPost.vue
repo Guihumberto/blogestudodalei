@@ -80,31 +80,31 @@
           >
             {{ item.title}} - {{ item.id }}
             <template v-slot:append>
-              <v-tooltip text="Editar">
-                <template v-slot:activator="{ props }">
-                  <v-btn
-                    color="grey-lighten-1"
-                    icon="mdi-file-edit"
-                    class="btn-list"
-                    variant="text"
-                    v-bind="props"
-                    @click.stop="editPost(item, true)"
-                  ></v-btn>
-                </template>
-              </v-tooltip>
-              <v-tooltip text="Desativar Pubblicação">
-                <template v-slot:activator="{ props }">
-                  <v-btn
-                    color="grey-lighten-1"
-                    icon="mdi-cancel"
-                    class="btn-list"
-                    variant="text"
-                    v-bind="props"
-                    @click.stop="publicarPost(item)"
-                  ></v-btn>
-                </template>
-              </v-tooltip>
-          </template>
+                <v-tooltip text="Editar">
+                  <template v-slot:activator="{ props }">
+                    <v-btn
+                      color="grey-lighten-1"
+                      icon="mdi-file-edit"
+                      class="btn-list"
+                      variant="text"
+                      v-bind="props"
+                      @click.stop="editPost(item, true)"
+                    ></v-btn>
+                  </template>
+                </v-tooltip>
+                <v-tooltip text="Desativar Pubblicação">
+                  <template v-slot:activator="{ props }">
+                    <v-btn
+                      color="grey-lighten-1"
+                      icon="mdi-cancel"
+                      class="btn-list"
+                      variant="text"
+                      v-bind="props"
+                      @click.stop="publicarPost(item)"
+                    ></v-btn>
+                  </template>
+                </v-tooltip>
+            </template>
           </v-list-item>
         </v-list>
         <v-alert icon="mdi-cancel" v-else>

@@ -156,11 +156,12 @@ export const useListPostsStore = defineStore("listPosts", {
       },
     ],
     post: {
-      id: '',
+      id: null,
       title: '',
       subtitle: '',
       text: '',
       author: '',
+      disciplina: [],
       legislacao: [],
       doutrina: [],
       jurisprudencia: [],
@@ -178,12 +179,23 @@ export const useListPostsStore = defineStore("listPosts", {
       return this.showListPosts
     },
     readOnePost(){
-      return this.post[0]
+      return this.post
     }
   },
   actions:{
     savePost(post) {
-      this.listPosts.push(post)
+      this.clearPost()
+
+      this.post.id = Date.now()
+      this.post.title = post.title
+      this.post.subtitle = post.subtitle
+      this.post.author = post.author
+      this.post.dateCreate = Date.now()
+
+      this.listPosts.push(this.post)
+
+      this.clearPost()
+      console.log('salvar')
     },
     updatePost(post){
     this.listPosts(x => {

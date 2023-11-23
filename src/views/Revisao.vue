@@ -1,7 +1,7 @@
 <template>
   <div class="wrapperRevisao">
     <div class="contentRevisao">
-      <v-btn flat="" to="/admin" icon="mdi-arrow-left"></v-btn>
+      <v-btn flat="" to="/admin?create=false" icon="mdi-arrow-left"></v-btn>
       <h1>{{ $route.query.publish ? 'Revisão de Post Publicado' : 'Revisão de post não Publicado'}}</h1>
       <v-btn @click="edit = !edit">Editar</v-btn>
       <div>
