@@ -20,8 +20,8 @@
               <h5>Direito Tributário</h5>
             </div>
           </div>
-          <div>
-            {{item.text }}
+          <div class="text">
+            <p> {{item.text }}</p>
           </div>
           <small class="mt-5">publicado em: {{ item.dateCreate}}</small>
           <div class="line_divider"></div>
@@ -181,6 +181,12 @@ background: linear-gradient(90deg, rgba(212,219,221,1) 0%, rgba(203,242,250,1) 3
 }
 .dialogFIlter{
   display: none;
+}
+.text p {
+  max-height: 3em;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @media (max-width: 500px){
   .imgPost{
