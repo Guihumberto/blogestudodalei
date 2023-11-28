@@ -34,7 +34,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   width: min(95%, 1000px);
   margin-inline: auto;
 }
@@ -60,7 +59,6 @@ h3{
 .breadcrumbs{
   width: 100%;
   padding-bottom: 16px;
-  margin-top: 6.5rem;
   transition: .6s ease;
 }
 </style>

@@ -66,6 +66,7 @@ import Share from './Share.vue'
 }
 h1{
   font-size: var(--step-3);
+  margin: 0;
 }
 h2{
   font-size: var(--step-1);

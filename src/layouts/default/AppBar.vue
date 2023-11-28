@@ -1,18 +1,20 @@
 <template>
  <div class="containerHead">
-  <div class="contentHead">
-    <h1 class="title" @click.prevent="home()">Blog <span class="estlei">Estudo da Lei</span><span class="el"> EL</span></h1>
-    <nav class="navbar">
-      <a>Leis</a>
-      <a>Súmulas</a>
-      <a @click="goAdmin()">Admin</a>
-      <a @click="goBLog()">Blog</a>
-    </nav>
-    <div class="btngroup">
-      <v-btn variant="plain" class="filter" icon="mdi-filter"  @click="activeFilter()"></v-btn>
-      <v-btn variant="plain" :icon="readDark ? 'mdi-moon-waxing-crescent' : 'mdi-weather-sunny'" @click="activeDark()"></v-btn>
-    </div>
-  </div>
+ </div>
+ <div class="wrapperhead">
+   <div class="contentHead">
+     <h1 class="title" @click.prevent="home()">Blog <span class="estlei">Estudo da Lei</span><span class="el"> EL</span></h1>
+     <nav class="navbar">
+       <a>Leis</a>
+       <a>Súmulas</a>
+       <a @click="goAdmin()">Admin</a>
+       <a @click="goBLog()">Blog</a>
+     </nav>
+     <div class="btngroup">
+       <v-btn variant="plain" class="filter" icon="mdi-filter"  @click="activeFilter()"></v-btn>
+       <v-btn variant="plain" :icon="readDark ? 'mdi-moon-waxing-crescent' : 'mdi-weather-sunny'" @click="activeDark()"></v-btn>
+     </div>
+   </div>
  </div>
 </template>
 
@@ -53,34 +55,47 @@
 
 <style scoped>
 .containerHead{
-  position: fixed;
-  top: 0;
-  background: #2E3440;
+  background: url('https://png.pngtree.com/thumb_back/fw800/background/20210227/pngtree-galaxy-galaxy-starry-night-sky-background-image_571584.jpg');
+  background-position: bottom;
+  background-size: cover;
   width: 100%;
-  height:5rem;
+  min-height:30rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  user-select:none;
+  transition: .6s ease;
+}
+.wrapperhead{
+  position: sticky;
+  top: 0;
+  background: #050308;
+  width: 100%;
+  min-height: 5rem;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
   user-select:none;
   transition: .6s ease;
+  z-index: 1000;
 }
-.containerHead .contentHead{
+.contentHead{
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: min(90%, 1000px);
 }
-.containerHead .contentHead h1{
+.contentHead h1{
   transition: .6s ease;
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   margin: 0;
 }
-.containerHead .contentHead h1:hover{
+.contentHead h1:hover{
   color: rgb(200, 207, 207);
 }
-.containerHead .contentHead nav a{
+.contentHead nav a{
   position: relative;
   display: inline-block;
   text-decoration: none;
@@ -88,7 +103,7 @@
   padding: .3rem 0;
   transition: .5s ease;
 }
-.containerHead .contentHead nav a::after{
+.contentHead nav a::after{
   content: '';
   position: absolute;
   left: 0;
@@ -100,7 +115,7 @@
   transform: scaleX(0);
   transition: transform .5s;
 }
-.containerHead .contentHead nav a:hover::after, :focus{
+.contentHead nav a:hover::after, :focus{
   transform: scaleX(1);
 }
 .el{
@@ -116,7 +131,7 @@
   }
 }
 @media (max-width: 624px){
-  .containerHead .contentHead nav{
+  .contentHead nav{
     display: none;
   }
 }
