@@ -52,13 +52,6 @@
           :disabled="loading"
           @click="selected.push(item)"
         >
-          <template v-slot:prepend>
-            <v-icon
-              :disabled="loading"
-              :icon="item.icon"
-            ></v-icon>
-          </template>
-
           <v-list-item-title v-text="item.text"></v-list-item-title>
         </v-list-item>
       </template>

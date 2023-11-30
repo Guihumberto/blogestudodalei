@@ -14,6 +14,9 @@
   import { useGeneralStore } from '@/store/GeneralStore'
   const generalStore = useGeneralStore()
 
+  import { useListPostsStore } from '@/store/ListPostsStore'
+  const postStore = useListPostsStore()
+
   import DefaultBar from './AppBar.vue'
   import DefaultView from './View.vue'
   import Footer from './Footer.vue';
@@ -21,6 +24,8 @@
   import {ref, onMounted} from 'vue'
 
   let menuShow = ref(false)
+
+  postStore.getAllPostsFB()
 
   onMounted(() => {
     window.onscroll = () => {
@@ -129,5 +134,12 @@ body{
       color: red;
     }
   }
+}
+.load{
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

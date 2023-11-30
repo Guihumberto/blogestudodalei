@@ -26,6 +26,11 @@ const routes = [
         name: 'Revisao',
         component: () => import('@/views/Revisao.vue'),
       },
+      {
+        path: '/admin/user',
+        name: 'User',
+        component: () => import('@/views/User.vue'),
+      },
     ],
   },
   {
@@ -36,6 +41,17 @@ const routes = [
         path: '/blog',
         name: 'Blog',
         component: () => import('@/views/Blog.vue'),
+      },
+    ],
+  },
+  {
+    path: '/inspire',
+    component: () => import('@/layouts/default/Inspire.vue'),
+    children: [
+      {
+        path: '/inspire',
+        name: 'Inspire',
+        component: () => import('@/views/inspireOne.vue'),
       },
     ],
   },

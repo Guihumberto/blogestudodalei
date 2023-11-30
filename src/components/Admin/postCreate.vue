@@ -1,34 +1,58 @@
 <template>
-  <div class="my-10">
-      <h1>Novo Post</h1>
-      <v-text-field
-      label="Título"
-      density="comfortable"
-      variant="outlined"
-      class="mt-5"
-      clearable
-      v-model.trim="post.title"
-    ></v-text-field>
-    <v-text-field
-      label="Subtítulo"
-      density="comfortable"
-      variant="outlined"
-      clearable
-      v-model="post.subtitle"
-    ></v-text-field>
-    <v-select
-      label="Disciplina"
-      density="comfortable"
-      variant="outlined"
-      clearable
-    ></v-select>
+  <div class="my-5">
+      <h2>Novo Post</h2>
+      <v-form @submit.prevent="savePost()" ref="form">
+        <v-text-field
+        label="Título"
+        density="comfortable"
+        variant="outlined"
+        class="mt-5"
+        clearable
+        v-model.trim="post.title"
+        ></v-text-field>
+        <v-text-field
+          label="Subtítulo"
+          density="comfortable"
+          variant="outlined"
+          clearable
+          v-model="post.subtitle"
+        ></v-text-field>
+        <v-autocomplete
+          v-model="post.disciplina"
+          :items="discisplinas"
+          chips
+          closable-chips
+          color="blue-grey-lighten-2"
+          item-title="name"
+          item-value="id"
+          label="Disciplina"
+          density="comfortable"
+          variant="outlined"
+          clearable
+          multiple
+        >
+          <template v-slot:chip="{ props, item }">
+            <v-chip
+              v-bind="props"
+              :text="item.raw.name"
+            ></v-chip>
+          </template>
+
+          <template v-slot:item="{ props, item }">
+            <v-list-item
+              v-bind="props"
+              :title="item?.raw?.name"
+            ></v-list-item>
+          </template>
+        </v-autocomplete>
+        <div ref="editor" />
+        <div class="my-5">
+          <v-btn class="mr-2" @click="clearForm()">Limpar</v-btn>
+          <v-btn type="submit">Visualizar</v-btn>
+        </div>
+      </v-form>
   </div>
   <div>
-    <div ref="editor" />
-    <div class="my-5">
-      <v-btn class="mr-2" @click="clearForm()">Limpar</v-btn>
-      <v-btn @click="savePost()" >Visualizar</v-btn>
-    </div>
     <div class="mt-5">
       <div class="pa-5 border">
         <h1>{{ post.title }}</h1>
@@ -54,11 +78,17 @@ const listStore = useListPostsStore()
         quill: null,
         viewText: true,
         post:{
-          title: '',
-          subtitle: '',
+          title: 'Titulo TT',
+          subtitle: 'Subtitulo SS',
+          disciplina: [],
           text: '',
           author: 1
-        }
+        },
+        discisplinas:[
+          {id: 1, name: 'Direito Administrativo', sigla: 'DAdmin'},
+          {id: 2, name: 'Direito Constitucional', sigla: 'DConst'},
+          {id: 3, name: 'Direito Tributário', sigla: 'DTrib'},
+        ]
       }
     },
     computed:{

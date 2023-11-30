@@ -1,6 +1,9 @@
 <template>
   <div class="wrapperAdmin">
     <div class="contentAdmin">
+      <div class="menubar">
+        <v-btn to="/admin/user" icon="mdi-tools"></v-btn>
+      </div>
       <login-admin v-if="login" />
       <main-post v-else />
     </div>
@@ -17,14 +20,13 @@ import MainPost from '@/components/Admin/mainPost.vue'
       return{
         login: false
       }
-    }
+    },
   }
 </script>
 
 <style lang="scss" scoped>
 .wrapperAdmin{
   min-height: 70vh;
-  margin-top: 10rem;
   display: flex;
   justify-content: baseline;
   flex-direction: column;
@@ -34,5 +36,11 @@ import MainPost from '@/components/Admin/mainPost.vue'
 .wrapperAdmin .contentAdmin{
   width: 1024px;
   min-height: 50vh;
+}
+.menubar{
+  width: 100%;
+  padding: 1rem 0;
+  margin: .5rem 0;
+  text-align: right;
 }
 </style>
