@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import db from '@/firebase/init'
-import { collection, addDoc, doc, getDocs, query, where, deleteDoc } from 'firebase/firestore'
+import { collection, addDoc, doc, getDocs, query, where, deleteDoc, getDoc, updateDoc } from 'firebase/firestore'
 
 export const useListPostsStore = defineStore("listPosts", {
   state: () => ({
@@ -21,7 +21,9 @@ export const useListPostsStore = defineStore("listPosts", {
       update: '',
       publish: false
     },
-    loadPosts: true
+    onePost: {},
+    loadPosts: true,
+    loadPost: true,
   }),
   getters: {
     readListPosts() {
@@ -31,10 +33,13 @@ export const useListPostsStore = defineStore("listPosts", {
       return this.showListPosts
     },
     readOnePost(){
-      return this.post
+      return this.onePost
     },
     readLoadAllPosts(){
       return this.loadPosts
+    },
+    readLoadOnePost(){
+      return this.loadPost
     }
   },
   actions:{
@@ -84,12 +89,37 @@ export const useListPostsStore = defineStore("listPosts", {
         }
       })
     },
-    publicarPost(post){
-      this.listPosts.map(x => {
-        if(x.id == post.id) {
-          x.publish = !x.publish
+    async publicarPost(post){
+      try {
+        const docRef = doc(db, 'posts', post.idFb)
+        const docSpan = await getDoc(docRef)
+
+        console.log(docRef);
+
+        // verificar o usuário
+        // if(docSpan.data().user !== auth.currentUeser.uid) {
+        //   throw new Error("nao peretence ao usuario")
+        // }
+
+        if(!docSpan.exists()){
+          throw new Error('no exist doc')
         }
-      })
+
+        let dataPost
+
+        this.listPosts.map(x => {
+          if(x.id == post.id) {
+            x.publish = !x.publish
+            dataPost = x
+          }
+        })
+        console.log(dataPost);
+
+        await updateDoc(docRef, dataPost)
+
+      } catch (error) {
+        console.log(error);
+      }
     },
     async deletePost(idFb){
 
@@ -102,8 +132,18 @@ export const useListPostsStore = defineStore("listPosts", {
     showCreatePost(){
       this.showListPosts = !this.showListPosts
     },
-    loadOnePost(id){
-      this.post = this.listPosts.filter(x => x.id == id)
+    async loadOnePost(id){
+      try {
+
+        const docRef = doc(db, "posts", id)
+        const docSpan = await getDoc(docRef)
+        this.onePost = docSpan.data()
+
+      } catch (error) {
+        console.log(error);
+      }finally{
+        this.loadPost = false
+      }
     },
     clearPost(){
       this.post = {

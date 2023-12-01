@@ -4,7 +4,8 @@
       <v-btn flat="" to="/admin?create=false" icon="mdi-arrow-left"></v-btn>
       <h1>{{ $route.query.publish ? 'Revisão de Post Publicado' : 'Revisão de post não Publicado'}}</h1>
       <v-btn @click="edit = !edit">Editar</v-btn>
-      <div>
+      <load v-if="loadPost" />
+      <div v-else>
         <rev-post v-if="!edit" :post="post" />
         <post-edit v-else :postEdit="post" />
       </div>
@@ -18,8 +19,9 @@ const listStore = useListPostsStore()
 
 import revPost from '@/components/Admin/revPost.vue'
 import postEdit from '@/components/Admin/postEdit.vue'
+import Load from '@/components/elementos/load.vue'
   export default {
-    components: { revPost, postEdit },
+    components: { revPost, postEdit, Load },
     data(){
       return{
         edit: false,
@@ -29,6 +31,9 @@ import postEdit from '@/components/Admin/postEdit.vue'
     computed:{
       post(){
         return listStore.readOnePost
+      },
+      loadPost(){
+        return listStore.readLoadOnePost
       }
     },
     created(){
@@ -41,7 +46,6 @@ import postEdit from '@/components/Admin/postEdit.vue'
 <style lang="scss" scoped>
 .wrapperRevisao{
   min-height: 70vh;
-  margin-top: 10rem;
   display: flex;
   justify-content: baseline;
   flex-direction: column;

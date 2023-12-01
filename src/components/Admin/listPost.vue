@@ -1,14 +1,7 @@
 <template>
   <div>
     <h3 class="my-5">Lista de Posts</h3>
-    <div class="load" v-if="loadPosts">
-      <v-progress-circular
-      :size="70"
-      :width="7"
-      color="purple"
-      indeterminate
-    ></v-progress-circular>
-    </div>
+    <load v-if="loadPosts" />
     <div v-else>
       <div v-if="listPostsAll.length">
         <div>
@@ -22,7 +15,7 @@
               link
               v-for="item, i in listPostsNoPusblish"
               :key="i"
-              @click="goTo(item.id)"
+              @click="goTo(item.idFb)"
               :class="item.id == deleteId ? 'bg-red-lighten-5' : ''"
               class="listPosts"
             >
@@ -83,7 +76,7 @@
           <h3 class="text-grey">Publicados</h3>
           <v-list class="border my-5 pa-0" v-if="listPostsPusblish.length">
             <v-list-item
-              @click="goTo(item.id)"
+              @click="goTo(item.idFb)"
               link
               v-for="item, i in listPostsPusblish"
               :key="i"
@@ -131,9 +124,11 @@
 
 <script>
 import { useListPostsStore } from '@/store/ListPostsStore'
+import load from '../elementos/load.vue'
 const listPostsStore = useListPostsStore()
 
   export default {
+  components: { load },
     computed:{
       listPostsNoPusblish(){
         return listPostsStore.readListPosts.filter(x => !x.publish)

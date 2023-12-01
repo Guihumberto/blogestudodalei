@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-5">
     <h3>Editar</h3>
     <div>
       {{ postEdit }}
