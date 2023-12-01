@@ -1,5 +1,6 @@
 <template>
-  <div class="wrapperAllPosts">
+  <load v-if="loadPosts" />
+  <div  v-else class="wrapperAllPosts">
     <div class="posts">
       <div class="post" v-for="item, i in listPosts" :key="i" @click="onePostIn(i)">
         <!-- <div class="imgPost">
@@ -21,7 +22,7 @@
             </div>
           </div>
           <div class="text">
-            <p> {{item.text }}</p>
+            <p v-html="item.text"></p>
           </div>
           <small class="mt-5">publicado em: {{ item.dateCreate}}</small>
           <div class="line_divider"></div>
@@ -64,6 +65,7 @@
 </template>
 
 <script>
+import load from '@/components/elementos/load.vue'
 import { useGeneralStore } from '@/store/GeneralStore'
 const generalStore = useGeneralStore()
 
@@ -74,6 +76,7 @@ import FilterVue from './Filter/FilterAll.vue'
   export default {
     components:{
       FilterVue,
+      load
     },
     data(){
       return{
@@ -86,12 +89,15 @@ import FilterVue from './Filter/FilterAll.vue'
         return generalStore.readFilter
       },
       listAllPosts(){
-        return listStore.readListPosts
+        return listStore.readListPosts.filter( x => x.publish)
       },
       listPosts(){
         let list = this.listAllPosts
 
         return list.slice(0, this.qtdPosts)
+      },
+      loadPosts(){
+        return listStore.readLoadAllPosts
       }
     },
     methods:{
@@ -135,6 +141,8 @@ h4{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  animation: slideTop 1s ease forwards;
 }
 .post{
   padding: max(1vh, 1rem) 0;
@@ -143,6 +151,10 @@ h4{
   justify-items: center;
   border-radius: 16px;
   transition: .6s ease;
+  width: 100%;
+}
+.post > *{
+  width: 100%;
 }
 .post:hover{
   cursor: pointer;
@@ -159,7 +171,7 @@ h4{
   width: 2rem;
   height: 100%;
   background: rgb(212,219,221);
-background: linear-gradient(90deg, rgba(212,219,221,1) 0%, rgba(203,242,250,1) 30%, rgba(152,220,230,1) 60%, rgba(107,224,247,1) 68%, rgba(20,203,240,1) 100%);transition: .5s ease;
+  background: linear-gradient(90deg, rgba(212,219,221,1) 0%, rgba(203,242,250,1) 30%, rgba(152,220,230,1) 60%, rgba(107,224,247,1) 68%, rgba(20,203,240,1) 100%);transition: .5s ease;
   opacity: 0;
 }
 .post:hover .boxpin{
@@ -187,6 +199,10 @@ background: linear-gradient(90deg, rgba(212,219,221,1) 0%, rgba(203,242,250,1) 3
   white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.filter{
+  opacity: 0;
+  animation: slideTop 1s ease forwards;
 }
 @media (max-width: 500px){
   .imgPost{

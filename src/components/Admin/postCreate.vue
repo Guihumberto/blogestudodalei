@@ -78,8 +78,8 @@ const listStore = useListPostsStore()
         quill: null,
         viewText: true,
         post:{
-          title: 'Titulo TT',
-          subtitle: 'Subtitulo SS',
+          title: '',
+          subtitle: '',
           disciplina: [],
           text: '',
           author: 1

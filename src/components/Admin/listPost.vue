@@ -68,9 +68,7 @@
               </template>
             </v-list-item>
           </v-list>
-          <v-alert icon="mdi-cancel" v-else>
-            <p>Você ainda não possui posts para revisão</p>
-          </v-alert>
+          <alert v-else :alert="{icon: 'mdi-alert', title: 'Você ainda não possui posts para revisão'}" />
         </div>
         <div>
           <h3 class="text-grey">Publicados</h3>
@@ -110,14 +108,10 @@
               </template>
             </v-list-item>
           </v-list>
-          <v-alert icon="mdi-cancel" v-else>
-            <p>Você ainda não possui posts publicados</p>
-          </v-alert>
+          <alert v-else :alert="{icon: 'mdi-cancel', title: 'Você ainda não possui posts publicados'}" />
         </div>
       </div>
-      <v-alert icon="mdi-cancel" v-else>
-        <p>Você ainda não possui posts criados</p>
-      </v-alert>
+      <alert v-else :alert="{icon:'mdi-cancel', title: 'Você ainda não possui posts criados'}" />
     </div>
   </div>
 </template>
@@ -125,10 +119,11 @@
 <script>
 import { useListPostsStore } from '@/store/ListPostsStore'
 import load from '../elementos/load.vue'
+import alert from '../elementos/alert.vue'
 const listPostsStore = useListPostsStore()
 
   export default {
-  components: { load },
+  components: { load, alert },
     computed:{
       listPostsNoPusblish(){
         return listPostsStore.readListPosts.filter(x => !x.publish)

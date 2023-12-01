@@ -82,12 +82,31 @@ export const useListPostsStore = defineStore("listPosts", {
 
       this.clearPost()
     },
-    updatePost(post){
-    this.listPosts(x => {
-        if(x.id == post.id) {
-          x = post
+    async updatePost(post, idFb){
+      // this.listPosts(x => {
+      //     if(x.id == post.id) {
+      //       x = post
+      //     }
+      // })
+      try {
+        const docRef = doc(db, 'posts', idFb)
+        const docSpan = await getDoc(docRef)
+
+
+        // verificar o usuário
+        // if(docSpan.data().user !== auth.currentUeser.uid) {
+        //   throw new Error("nao peretence ao usuario")
+        // }
+
+        if(!docSpan.exists()){
+          throw new Error('no exist doc')
         }
-      })
+
+        await updateDoc(docRef, post)
+
+      } catch (error) {
+        console.log(error);
+      }
     },
     async publicarPost(post){
       try {
