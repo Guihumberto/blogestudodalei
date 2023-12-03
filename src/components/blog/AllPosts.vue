@@ -176,7 +176,7 @@ h4{
 }
 .post:hover .boxpin{
   opacity: 1;
-  width: 80%;
+  width: 50%;
 }
 .imgPost{
   width: 15rem;

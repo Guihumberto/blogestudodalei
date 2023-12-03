@@ -78,16 +78,9 @@ export const useListPostsStore = defineStore("listPosts", {
       const colRef = collection(db, 'posts')
       const docRef = await addDoc(colRef, this.post)
 
-      console.log('Doc create', docRef.id);
-
       this.clearPost()
     },
     async updatePost(post, idFb){
-      // this.listPosts(x => {
-      //     if(x.id == post.id) {
-      //       x = post
-      //     }
-      // })
       try {
         const docRef = doc(db, 'posts', idFb)
         const docSpan = await getDoc(docRef)

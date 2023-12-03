@@ -1,14 +1,19 @@
 <template>
  <div class="containerHead">
- </div>
+    <div class="wrapperSubhead">
+      <div class="title">
+        <h1>Blog Estudo da Lei</h1>
+      </div>
+      <img src="@/assets/books.png" alt="livros" />
+   </div>
+  </div>
  <div class="wrapperhead">
    <div class="contentHead">
-     <h1 class="title" @click.prevent="home()">Blog <span class="estlei">Estudo da Lei</span><span class="el"> EL</span></h1>
      <nav class="navbar">
-       <a>Leis</a>
-       <a>Súmulas</a>
-       <a @click="goAdmin()">Admin</a>
-       <a @click="goBLog()">Blog</a>
+       <a @click="goPage('/')">Home</a>
+       <a href="#">Estudo da lei</a>
+       <a href="#">Sobre</a>
+       <a @click="goPage('admin?create=true')">Admin</a>
      </nav>
      <div class="btngroup">
        <v-btn variant="plain" class="filter" icon="mdi-filter"  @click="activeFilter()"></v-btn>
@@ -43,11 +48,8 @@
       activeDark(){
         generalStore.changeDark()
       },
-      goBLog(){
-        this.$router.replace('/blog')
-      },
-      goAdmin(){
-        this.$router.replace('/admin?create=true')
+      goPage(url){
+        this.$router.replace(`${url}`)
       }
     }
   }
@@ -63,16 +65,28 @@
   color: #fff;
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: center;
   user-select:none;
   transition: .6s ease;
+}
+.wrapperSubhead{
+  width: min(100%, 1000px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.containerHead img{
+  width: min(50%, 500px);
+}
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 .wrapperhead{
   position: sticky;
   top: 0;
   background: #050308;
   width: 100%;
-  min-height: 5rem;
+  min-height: 3rem;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -81,9 +95,16 @@
   transition: .6s ease;
   z-index: 1000;
 }
+.title{
+  width: min(50%, 500px);
+}
+.title h1{
+  font-size: 4.5rem;
+  line-height: 1.2;
+}
 .contentHead{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: min(90%, 1000px);
 }
@@ -102,6 +123,7 @@
   margin-left: 2rem;
   padding: .3rem 0;
   transition: .5s ease;
+  color: white;
 }
 .contentHead nav a::after{
   content: '';

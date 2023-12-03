@@ -49,7 +49,7 @@
                       class="btn-list"
                       variant="text"
                       v-bind="props"
-                      @click.stop="editPost(item)"
+                      @click="goTo(item.idFb)"
                     ></v-btn>
                   </template>
                 </v-tooltip>
@@ -89,7 +89,7 @@
                         class="btn-list"
                         variant="text"
                         v-bind="props"
-                        @click.stop="editPost(item, true)"
+                        @click="goTo(item.idFb)"
                       ></v-btn>
                     </template>
                   </v-tooltip>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <div class="title-text-blog">
+      <div>
         <h1>{{ post.title }}</h1>
         <h2 class="text-grey"> {{ post.subtitle }} </h2>
         <small>Publicado em: {{ post.dateCreate }}</small>
@@ -14,18 +14,17 @@
         <div v-html="post.text" />
       </div>
     </div>
-    <inc-references class="my-10" />
-    <inc-post />
+    <inc-references class="my-10" :post="post" />
+    <inc-post :post="post" />
 
   </div>
 </template>
 
 <script>
   import PostFor from '../blog/OnePost/PostFor.vue';
-  import { useListPostsStore } from '@/store/ListPostsStore'
   import IncReferences from './incReferences.vue';
   import IncPost from './incPost.vue';
-  const listStore = useListPostsStore()
+
 
   export default {
     data(){
@@ -45,5 +44,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+h1{
+  margin: 2rem 0 0 0;
+}
 </style>
