@@ -7,19 +7,38 @@ const listStore = useListPostsStore()
 
 export const useReferenceStore = defineStore("reference", {
   state: () => ({
-    references: [],
+    listReferences: [],
     load:  true,
     idRef: ''
   }),
   getters: {
     readReferences() {
-      return this.references
+      return this.listReferences
     },
     readLoad() {
       return this.load
     },
   },
   actions:{
+    async getAllReferences(){
+      this.listReferences = []
+
+      try {
+        const q =  query(collection(db, 'referencias'))
+        const querySnap = await getDocs(q)
+
+        querySnap.forEach((doc) => {
+          let referencia = doc.data()
+          referencia.idFb = doc.id
+          console.log(referencia);
+          this.listReferences.push(referencia)
+        })
+      } catch (error) {
+        console.log(error);
+      }finally{
+        this.load = false
+      }
+    },
     async addReference(item, post, idPost){
       try {
         const colRef = collection(db, 'referencias')
@@ -35,8 +54,9 @@ export const useReferenceStore = defineStore("reference", {
       }
 
     },
-    deleteREference(){
-
+    async deleteReference(idFb){
+      const docRef = doc(db, 'referencias', idFb)
+      await deleteDoc(docRef)
     }
   }
 });

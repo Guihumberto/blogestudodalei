@@ -58,6 +58,11 @@ const routes = [
         name: 'Inspire2',
         component: () => import('@/views/inspireTwo.vue'),
       },
+      {
+        path: '/inspire3',
+        name: 'Inspire3',
+        component: () => import('@/views/inspireThree.vue'),
+      },
     ],
   },
 ]

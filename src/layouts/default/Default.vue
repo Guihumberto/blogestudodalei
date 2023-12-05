@@ -17,6 +17,9 @@
   import { useListPostsStore } from '@/store/ListPostsStore'
   const postStore = useListPostsStore()
 
+  import { useReferenceStore } from '@/store/ReferenceStore'
+  const referenceStore = useReferenceStore()
+
   import DefaultBar from './AppBar.vue'
   import DefaultView from './View.vue'
   import Footer from './Footer.vue';
@@ -26,6 +29,7 @@
   let menuShow = ref(false)
 
   postStore.getAllPostsFB()
+  referenceStore.getAllReferences()
 
   onMounted(() => {
     window.onscroll = () => {
