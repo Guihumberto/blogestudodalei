@@ -1,12 +1,24 @@
 <template>
     <div class="references">
       <div>
-        <h3 class="title">Legislação</h3>
+        <h3  class="title">Tags</h3>
         <div>
-          <p v-for="item, i in 5" :key="item">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <v-chip
+            class="mr-2"
+            v-for="item, i in post.tags" :key="i">{{ item }}</v-chip>
         </div>
       </div>
       <div>
+        <h3 class="title">Referências</h3>
+        <div>
+          <div v-for="item, i in listRef" :key="i" class="border-b pb-5 pt-3">
+            <p class="font-weight-medium">{{ item.resumo }}</p>
+            <p>{{ item.text }}</p>
+            <p class="font-italic">{{ item.refs }}</p>
+          </div>
+        </div>
+      </div>
+      <!-- <div>
         <h3  class="title">Doutrina</h3>
         <div>
           <p v-for="item, i in 5" :key="item">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -17,21 +29,36 @@
         <div>
           <p v-for="item, i in 5" :key="item">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-      </div>
-      <div>
-        <h3  class="title">Tags</h3>
-        <div>
-          <v-chip
-            class="mr-2"
-            v-for="item, i in 5" :key="item">Lorem.</v-chip>
-        </div>
-      </div>
+      </div> -->
     </div>
 </template>
 
 <script>
-  export default {
+import { useListPostsStore } from '@/store/ListPostsStore'
+const listStore = useListPostsStore()
 
+import { useReferenceStore } from '@/store/ReferenceStore'
+const referenceStore = useReferenceStore()
+
+  export default {
+    computed:{
+      post(){
+        return listStore.readOnePost
+      },
+      listRef(){
+        let list = referenceStore.readReferences
+        let listPostReferencia = []
+
+        list.forEach(listref => {
+          this.post.legislacao.forEach( item => {
+            if(listref.idFb == item){
+              listPostReferencia.push(listref)
+            }
+          })
+        });
+        return listPostReferencia
+      }
+    },
   }
 </script>
 

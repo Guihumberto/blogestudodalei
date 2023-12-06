@@ -1,30 +1,25 @@
 <template>
   <div class="contApp">
     <div class="breadcrumbs">
-      <v-btn
-        flat
+      <a
         class="pa-0"
         @click="goHome()"
       >
-        <v-icon class="mr-1">mdi-home</v-icon>Home
-      </v-btn>
+        Início
+      </a>
     </div>
-    <all-posts v-if="generalStore.readPosts" />
-    <one-post v-else />
+    <all-posts />
+
   </div>
 </template>
 
 <script setup>
   import router from '@/router';
-  import { useGeneralStore } from '@/store/GeneralStore'
-  const generalStore = useGeneralStore()
-
   import AllPosts from '@/components/blog/AllPosts.vue';
-  import OnePost from '@/components/blog/OnePost/Post.vue'
+
 
   function goHome() {
     router.push('/')
-    generalStore.changePosts(true)
   }
 </script>
 
@@ -34,8 +29,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: min(95%, 1000px);
+  width: min(100%, 1000px);
   margin-inline: auto;
+  margin-bottom: 5rem;
 }
 .flow > * + * {
   margin-top: 1em;
@@ -47,7 +43,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1{
   font-size: var(--fs-700);
-  margin-top: 2em;
 }
 h2{
   font-size: var(--fs-600);
@@ -60,5 +55,14 @@ h3{
   width: 100%;
   padding-bottom: 16px;
   transition: .6s ease;
+}
+.breadcrumbs a{
+  transition: .5s ease;
+}
+.breadcrumbs a::before{
+  content: '>';
+}
+.breadcrumbs a:hover{
+  font-weight: 500;
 }
 </style>

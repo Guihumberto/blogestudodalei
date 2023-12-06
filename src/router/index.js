@@ -14,7 +14,12 @@ const routes = [
       {
         path: '/post/:id',
         name: 'Post',
-        component: () => import('@/views/Home.vue'),
+        component: () => import('@/views/PagePost.vue'),
+      },
+      {
+        path: '/aboutAuthor/:id',
+        name: 'AboutAuthor',
+        component: () => import('@/views/AboutAuthor.vue'),
       },
       {
         path: '/admin',

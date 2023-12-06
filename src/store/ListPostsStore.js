@@ -129,7 +129,6 @@ export const useListPostsStore = defineStore("listPosts", {
         const docRef = doc(db, 'posts', post.idFb)
         const docSpan = await getDoc(docRef)
 
-        console.log(docRef);
 
         // verificar o usuário
         // if(docSpan.data().user !== auth.currentUeser.uid) {
@@ -148,7 +147,6 @@ export const useListPostsStore = defineStore("listPosts", {
             dataPost = x
           }
         })
-        console.log(dataPost);
 
         await updateDoc(docRef, dataPost)
 
@@ -169,7 +167,6 @@ export const useListPostsStore = defineStore("listPosts", {
     },
     async loadOnePost(id){
       try {
-
         const docRef = doc(db, "posts", id)
         const docSpan = await getDoc(docRef)
         this.onePost = docSpan.data()

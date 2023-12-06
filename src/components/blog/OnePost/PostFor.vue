@@ -2,23 +2,38 @@
   <div class="wrapperPostFor">
     <div class="author">
       <v-avatar
-        size="70"
+        size="50"
         color="grey"
         icon="mdi-account"
         class="mr-5"
       ></v-avatar>
       <div class="nameAuthor">
-        <h3>Por João Humberto</h3>
-        <h4>Auditor Fiscal</h4>
-        <a href="#">Sobre o Autor</a>
+        <h3>Por {{ authors.firstName }}</h3>
+        <h4>{{authors.cargo}}</h4>
+        <a @click="goTo(author)">Sobre o Autor</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
+import{ useListPostsStore } from '@/store/ListPostsStore'
+const listStore = useListPostsStore()
 
+  export default {
+    props:{
+      author: Number
+    },
+    computed:{
+      authors(){
+        return listStore.readAuthors.find(x => x.id == 1)
+      }
+    },
+    methods:{
+      goTo(id){
+        this.$router.push(`/aboutAuthor/${id}`)
+      }
+    }
   }
 </script>
 
@@ -45,6 +60,12 @@
   width: 1280px;
   padding-right: .5rem;
   color: #585656;
+}
+.nameAuthor h3{
+  font-size: 1.3rem;
+}
+.nameAuthor h4{
+  font-size: 1rem;
 }
 .nameAuthor a{
   text-decoration: none;

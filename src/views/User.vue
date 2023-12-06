@@ -67,7 +67,6 @@
 
         const docRef = await addDoc(colRef, this.user)
 
-        console.log('Doc create', docRef.id);
       },
       async getUser(){
         const q =  query(collection(db, 'users'))

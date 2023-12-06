@@ -30,7 +30,6 @@ export const useReferenceStore = defineStore("reference", {
         querySnap.forEach((doc) => {
           let referencia = doc.data()
           referencia.idFb = doc.id
-          console.log(referencia);
           this.listReferences.push(referencia)
         })
       } catch (error) {
@@ -44,7 +43,6 @@ export const useReferenceStore = defineStore("reference", {
         const colRef = collection(db, 'referencias')
         const docRef = await addDoc(colRef, item)
         this.idRef = docRef.id
-        console.log('redId', docRef.id);
       } catch (error) {
         console.log(error);
       } finally {

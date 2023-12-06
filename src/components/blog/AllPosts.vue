@@ -2,7 +2,7 @@
   <load v-if="loadPosts" />
   <div  v-else class="wrapperAllPosts">
     <div class="posts">
-      <div class="post" v-for="item, i in listPosts" :key="i" @click="onePostIn(i)">
+      <div class="post" v-for="item, i in listPosts" :key="i" @click="onePostIn(item.idFb, item.title)">
         <!-- <div class="imgPost">
           Imagem
         </div> -->
@@ -113,9 +113,8 @@ import FilterVue from './Filter/FilterAll.vue'
       }
     },
     methods:{
-      onePostIn(namePost){
-        generalStore.changePosts(false)
-        this.$router.push(`/post/${namePost}`)
+      onePostIn(item, title){
+        this.$router.push(`/post/${item}?${title}`)
       },
       disableFilter(){
         generalStore.changeFilter(false)
@@ -164,6 +163,11 @@ h4{
   align-items: first baseline;
   width: 100%;
   margin: .5rem 0;
+}
+@media (max-width: 1005px) {
+  .wrapperAllPosts{
+    padding: 0 1rem;
+  }
 }
 .posts{
   width: 100%;

@@ -13,7 +13,7 @@
        <a @click="goPage('admin?create=true')">Admin</a>
      </nav>
      <div class="btngroup">
-       <v-btn variant="plain" class="filter" icon="mdi-filter"  @click="activeFilter()"></v-btn>
+       <!-- <v-btn variant="plain" class="filter" icon="mdi-filter"  @click="activeFilter()"></v-btn> -->
        <v-btn variant="plain" :icon="readDark ? 'mdi-moon-waxing-crescent' : 'mdi-weather-sunny'" @click="activeDark()"></v-btn>
      </div>
    </div>
