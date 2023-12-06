@@ -84,11 +84,6 @@ const listStore = useListPostsStore()
           text: '',
           author: 1
         },
-        discisplinas:[
-          {id: 1, name: 'Direito Administrativo', sigla: 'DAdmin'},
-          {id: 2, name: 'Direito Constitucional', sigla: 'DConst'},
-          {id: 3, name: 'Direito Tributário', sigla: 'DTrib'},
-        ]
       }
     },
     computed:{
@@ -97,6 +92,9 @@ const listStore = useListPostsStore()
       },
       isEmptyForm(){
         return this.preparPost
+      },
+      discisplinas(){
+        return listStore.readListDisciplinas
       }
     },
     methods:{

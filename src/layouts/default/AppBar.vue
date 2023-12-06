@@ -1,16 +1,13 @@
 <template>
  <div class="containerHead">
     <div class="wrapperSubhead">
-      <div class="title">
         <h1>Blog Estudo da Lei</h1>
-      </div>
-      <img src="@/assets/books.png" alt="livros" />
    </div>
   </div>
  <div class="wrapperhead">
    <div class="contentHead">
      <nav class="navbar">
-       <a @click="goPage('/')">Home</a>
+       <a @click="goHome()">Home</a>
        <a href="#">Estudo da lei</a>
        <a href="#">Sobre</a>
        <a @click="goPage('admin?create=true')">Admin</a>
@@ -48,6 +45,9 @@
       activeDark(){
         generalStore.changeDark()
       },
+      goHome(){
+        this.$router.push('/')
+      },
       goPage(url){
         this.$router.replace(`${url}`)
       }
@@ -57,9 +57,11 @@
 
 <style scoped>
 .containerHead{
-  background: url('https://png.pngtree.com/thumb_back/fw800/background/20210227/pngtree-galaxy-galaxy-starry-night-sky-background-image_571584.jpg');
-  background-position: bottom;
-  background-size: cover;
+  background: rgb(32,36,32);
+background: -moz-linear-gradient(90deg, rgba(32,36,32,1) 0%, rgba(102,111,102,0.22220763305322133) 30%, rgba(102,111,102,1) 60%, rgba(83,93,83,1) 68%, rgba(32,36,32,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(32,36,32,1) 0%, rgba(102,111,102,0.22220763305322133) 30%, rgba(102,111,102,1) 60%, rgba(83,93,83,1) 68%, rgba(32,36,32,1) 100%);
+background: linear-gradient(90deg, rgba(32,36,32,1) 0%, rgba(102,111,102,0.22220763305322133) 30%, rgba(102,111,102,1) 60%, rgba(83,93,83,1) 68%, rgba(32,36,32,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#202420",endColorstr="#202420",GradientType=1);
   width: 100%;
   min-height:30rem;
   color: #fff;
@@ -72,14 +74,21 @@
 .wrapperSubhead{
   width: min(100%, 1000px);
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
+  background: url(../../assets/books.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  height: 100%;
 }
-.containerHead img{
-  width: min(50%, 500px);
-}
-img:hover {
-  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+h1{
+  font-size: 4.5rem;
+  line-height: 1.1;
+  margin: 0;
+  width: 12ch;
+  -webkit-text-stroke-width: .01rem;
+  -webkit-text-stroke-color: #000;
 }
 .wrapperhead{
   position: sticky;
@@ -94,13 +103,6 @@ img:hover {
   user-select:none;
   transition: .6s ease;
   z-index: 1000;
-}
-.title{
-  width: min(50%, 500px);
-}
-.title h1{
-  font-size: 4.5rem;
-  line-height: 1.2;
 }
 .contentHead{
   display: flex;
@@ -163,6 +165,9 @@ img:hover {
   }
   .el{
     display: inline;
+  }
+  h1{
+    font-size: 3rem;
   }
 }
 </style>

@@ -63,6 +63,11 @@ const routes = [
         name: 'Inspire3',
         component: () => import('@/views/inspireThree.vue'),
       },
+      {
+        path: '/inspire4',
+        name: 'Inspire4',
+        component: () => import('@/views/inspireFour.vue'),
+      },
     ],
   },
 ]

@@ -18,13 +18,16 @@
               <div class="boxpin"></div>
             </div>
             <div class="bg-grey-lighten-3 pa-2">
-              <h5>Direito Tributário</h5>
+              <h5 v-for="dis, d in nameDisciplina(item.disciplina)" :key="d"> {{ dis.name }}</h5>
             </div>
+            <div>
+              <v-chip class="mr-1" v-for="tag, t in item.tags" :key="t" density="compact">{{ tag }}</v-chip>
+            </div>
+            <small class="mt-5">por {{nameAuthors(item.author)}}, publicado em: {{ formatteDate(item.dateCreate)}}</small>
           </div>
           <div class="text">
             <p v-html="item.text"></p>
           </div>
-          <small class="mt-5">publicado em: {{ item.dateCreate}}</small>
           <div class="line_divider"></div>
         </div>
       </div>
@@ -36,7 +39,7 @@
       >Veja Mais</v-btn>
     </div>
     <!-- sideRigthBar -->
-    <FilterVue class="filter"/>
+    <!-- <FilterVue class="filter"/> -->
     <!-- dialog -->
     <template>
       <div class="text-center">
@@ -72,6 +75,9 @@ const generalStore = useGeneralStore()
 import{ useListPostsStore } from '@/store/ListPostsStore'
 const listStore = useListPostsStore()
 
+import moment from 'moment'
+import 'moment/locale/pt-br'
+
 import FilterVue from './Filter/FilterAll.vue'
   export default {
     components:{
@@ -98,6 +104,12 @@ import FilterVue from './Filter/FilterAll.vue'
       },
       loadPosts(){
         return listStore.readLoadAllPosts
+      },
+      discisplinas(){
+        return listStore.readListDisciplinas
+      },
+      authors(){
+        return listStore.readAuthors
       }
     },
     methods:{
@@ -111,6 +123,25 @@ import FilterVue from './Filter/FilterAll.vue'
       includeMorePostsinList(){
         this.qtdPosts += 5
         this.$router.push(`?qtdpost=${this.qtdPosts}`)
+      },
+      nameDisciplina(listID){
+        let discisplinas = []
+
+        listID.forEach(id => {
+          this.discisplinas.forEach(dis => {
+            if(id == dis.id){
+              discisplinas.push(dis)
+            }
+          })
+        });
+        return discisplinas
+      },
+      nameAuthors(id){
+        let author = this.authors.find(x => x.id == id)
+        return author.firstName
+      },
+      formatteDate(item){
+        return moment(item).locale('pt-br').format('DD/MM/YYYY')
       }
     },
     created(){
@@ -135,7 +166,7 @@ h4{
   margin: .5rem 0;
 }
 .posts{
-  max-width: 80%;
+  width: 100%;
   margin-right: 2rem;
   display: flex;
   flex-direction: column;
@@ -173,10 +204,6 @@ h4{
   background: rgb(212,219,221);
   background: linear-gradient(90deg, rgba(212,219,221,1) 0%, rgba(203,242,250,1) 30%, rgba(152,220,230,1) 60%, rgba(107,224,247,1) 68%, rgba(20,203,240,1) 100%);transition: .5s ease;
   opacity: 0;
-}
-.post:hover .boxpin{
-  opacity: 1;
-  width: 50%;
 }
 .imgPost{
   width: 15rem;

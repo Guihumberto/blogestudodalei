@@ -5,21 +5,20 @@
         <h4 class="titlesite">
           EL - Estudo da Lei
         </h4>
-        <p>© Copyright 2022-2023 Leges - Estudo da Lei</p>
       </div>
       <div>
-        <h5>Desenvolvido por João Humberto Silva Ribeiro Júnior</h5>
         <div class="socialWrapper">
           <div class="socialnetwork" v-for="item, i in socialNet" :key="i">
             <v-icon>{{item.name}}</v-icon>
           </div>
-
         </div>
       </div>
     </div>
     <div class="subfooter">
       <a href="#">www.estudodalei.com.br</a>
     </div>
+    <h5 class="text-center">Desenvolvido por João Humberto Silva Ribeiro Júnior</h5>
+    <p>© Copyright 2022-2023 Leges - Estudo da Lei</p>
   </div>
 </template>
 
@@ -106,4 +105,7 @@ a {
     text-align: center;
   }
 }
+p{
+    font-size: 1rem;
+  }
 </style>

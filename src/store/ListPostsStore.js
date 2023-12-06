@@ -24,6 +24,23 @@ export const useListPostsStore = defineStore("listPosts", {
     onePost: {},
     loadPosts: true,
     loadPost: true,
+    discisplinas:[
+      {id: 1, name: 'Direito Administrativo', sigla: 'DAdmin'},
+      {id: 2, name: 'Direito Constitucional', sigla: 'DConst'},
+      {id: 3, name: 'Direito Tributário', sigla: 'DTrib'},
+    ],
+    authors:[{
+        id: 1,
+        firstName: 'João Humberto',
+        lastName: 'Júnior',
+        email: 'juninho.joao@hotmail.com',
+        photo: '',
+        cargo: 'Auditor Fiscal',
+        formacao: 'Ciências Contábeis',
+        about: 'Pai do guilherme e do Theodoro',
+        dateCreate: '29/11/2023'
+      }
+    ]
   }),
   getters: {
     readListPosts() {
@@ -40,6 +57,12 @@ export const useListPostsStore = defineStore("listPosts", {
     },
     readLoadOnePost(){
       return this.loadPost
+    },
+    readListDisciplinas(){
+      return this.discisplinas
+    },
+    readAuthors(){
+      return this.authors
     }
   },
   actions:{
