@@ -6,6 +6,9 @@
             <a href="#">Legislação</a>
             <a class="mx-2" href="#">Saiba Mais</a>
         </div>
+        <div>
+            Buscar
+        </div>
     </section>
 </template>
 
