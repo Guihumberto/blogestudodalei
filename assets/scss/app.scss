@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url("/fonts/Roboto-Black.ttf") format('tff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: Poppins;
+    color: #222222;
+    background: #F7F7F7;
+    // p {
+    //     line-height: 1.8;
+    //     letter-spacing: .1rem;
+    //     word-spacing: .1rem;
+    // }
+    h1, h2, h3, h4 {
+        color: #1a1a1a;
+    }
+    h5 {
+        color: #111111;
+    }
+}

@@ -1,0 +1,26 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  transition: 1s ease;
+}
+.content-wrapper{
+  min-height: 80vh;
+  width: min(100%, 1080px);
+  margin-inline: auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 600px) {
+  html{
+    font-size: 75%;
+  }
+}
+@media (max-width: 800px) {
+  .content-wrapper{
+    padding: 0 .2rem;
+  }
+}
